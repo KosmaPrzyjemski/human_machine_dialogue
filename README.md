@@ -8,3 +8,7 @@ Once installed (attention, Windows OS is required), place yourself in the Optimt
 
 ### Testing 
 To make a reservation via a conversation agent, run the command "ot_vxml_interpreter.exe X/gestion_agenda_v2.vxml.vxml" in the terminal (where X is a pathway to the folder). 
+
+
+### Future changes 
+A version 3 of the conversation agent will be available soon.
