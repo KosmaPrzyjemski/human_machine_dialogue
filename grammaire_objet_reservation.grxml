@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- fichier grammaire_num_ab.grxml -->
+<!-- reconnaitre un nombre brut ou , lui attribuer une valeur numerique .nb -->
+<!-- tout en memorisant la suite de mots qui correspond .text -->
+
+<grammar version="1.0" root="objet_reservation" xml:lang="fr">
+
+<meta name="description" content="grammaire objet reservation"/>
+<meta name="author" content="Isabelle Ferrane"/>
+<meta name="copyright" content="free for any purpose"/>
+
+<rule id="objet_reservation" scope="public">
+
+    <one-of>
+		<item >
+			<item repeat="0-1"><ruleref uri="#filler_debut_phrase" /> </item>
+			<item><ruleref uri="#raison_reservation_avec_filler" /></item>
+		</item>
+		<item><ruleref uri="#raison_reservation_sans_filler" /></item>
+	</one-of>
+	<tag> out.objet = rules.latest().objet  </tag>
+	
+</rule>
+
+<rule id="raison_reservation_sans_filler">
+	  <tag>out.batiment = "aucun" ;</tag>	
+      <one-of>
+              <item> cours <tag> out.objet = meta.current().text </tag> </item>
+              <item> reunion<tag> out.objet = meta.current().text </tag> </item>
+              <item> conference <tag> out.objet = meta.current().text </tag> </item>
+              <item> meeting <tag> out.objet = meta.current().text </tag> </item>
+              <item> tp <tag> out.objet = meta.current().text </tag> </item>
+              <item> examen <tag> out.objet = meta.current().text </tag> </item>
+      </one-of>
+</rule>
+
+<rule id="raison_reservation_avec_filler">
+	  <tag>out.batiment = "aucun" ;</tag>	
+      <one-of>
+              <item> un cours <tag> out.objet = meta.current().text </tag> </item>
+              <item> une reunion<tag> out.objet = meta.current().text </tag> </item>
+              <item> une conference <tag> out.objet = meta.current().text </tag> </item>
+              <item> un meeting <tag> out.objet = meta.current().text </tag> </item>
+              <item> un tp <tag> out.objet = meta.current().text </tag> </item>
+              <item> un examen <tag> out.objet = meta.current().text </tag> </item>
+
+      </one-of>
+</rule>
+
+<rule id="filler_debut_phrase">
+      <one-of>
+              <item>c est pour</item>
+              <item> pour </item>
+              <item>je reserve la salle pour </item>
+      </one-of>
+</rule>
+</grammar>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- fichier grammaire_num_ab.grxml -->
+<!-- reconnaitre un nombre brut ou , lui attribuer une valeur numerique .nb -->
+<!-- tout en memorisant la suite de mots qui correspond .text -->
+
+<grammar version="1.0" root="salle" xml:lang="fr">
+
+<meta name="description" content="grammaire numero abonne"/>
+<meta name="author" content="Isabelle Ferrane"/>
+<meta name="copyright" content="free for any purpose"/>
+
+<rule id="salle" scope="public">
+
+    
+	<item repeat="0-1"><ruleref uri="#filler_debut_phrase" /> </item>
+	<item> <ruleref uri="#nomSalle" /> </item>
+	<tag> out.salle = rules.latest().salle  </tag>
+	<item repeat="0-1">
+		<item repeat="0-1">  <ruleref uri="#fillerNomBatiment" /> </item>
+		<item> <ruleref uri="#NomBatiment"/> </item>
+		
+	</item>
+	<tag>out.batiment = rules.latest().batiment ; </tag>
+</rule>
+
+<rule id="nomSalle">
+	  <tag>out.batiment = "aucun" ;</tag>	
+      <one-of>
+              <item> 101 <tag> out.salle = meta.current().text </tag> </item>
+              <item> 102 <tag> out.salle = meta.current().text </tag> </item>
+              <item> 103  <tag> out.salle = meta.current().text </tag> </item>
+              <item> 201 <tag> out.salle = meta.current().text </tag> </item>
+              <item> 202 <tag> out.salle = meta.current().text </tag> </item>
+              <item> 203  <tag> out.salle = meta.current().text </tag> </item>
+              <item> 301 <tag> out.salle = meta.current().text </tag> </item>
+              <item> 302 <tag> out.salle = meta.current().text </tag> </item>
+              <item> 303  <tag> out.salle = meta.current().text </tag> </item>
+              <item> amphitheatre Daurat  <tag> out.salle = meta.current().text </tag> </item>
+              <item> amphi Daurat  <tag> out.salle = meta.current().text </tag> </item>
+              <item> amphitheatre daurat  <tag> out.salle = meta.current().text </tag> </item>
+              <item> amphi daurat  <tag> out.salle = meta.current().text </tag> </item>
+      </one-of>
+</rule>
+
+<rule id="filler_debut_phrase">
+      <one-of>
+              <item> c est  la </item>
+              <item> c est la salle </item>
+              <item> dans la  </item>
+              <item> dans la salle </item>
+              <item> a la salle </item>
+      </one-of>
+</rule>
+
+<rule id="fillerNomBatiment">
+      <one-of>
+              <item> du </item>
+              <item> dans le batiment  </item>
+              <item> qui est dans le </item>
+              <item> qui est dans le batiment  </item>
+              <item> qui sera dans le batiment </item>
+      </one-of>
+</rule>
+
+<rule id="NomBatiment">
+      <one-of>
+              <item> U1 <tag> out.batiment = meta.current().text </tag>  </item>
+              <item> U2 <tag> out.batiment = meta.current().text </tag> </item>
+              <item> U3 <tag> out.batiment = meta.current().text </tag> </item>
+              <item> U4 <tag> out.batiment = meta.current().text </tag> </item>
+              <item> K1 <tag> out.batiment = meta.current().text </tag>  </item>
+              <item> K2 <tag> out.batiment = meta.current().text </tag> </item>
+              <item> K3 <tag> out.batiment = meta.current().text </tag> </item>
+              <item> K4 <tag> out.batiment = meta.current().text </tag> </item>
+              <item> MFJA <tag> out.batiment = meta.current().text </tag> </item>
+      </one-of>
+</rule>
+</grammar>

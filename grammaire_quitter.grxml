@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar root="Quitter" version="1.0" xml:lang="fr">
+
+	<rule id="Quitter" >
+        <item repeat="0-1"> svp </item>
+        <item repeat="0-1"> je veux </item>
+        <item repeat="0-1"> je voudrais </item>
+		<item repeat="0-1"> je souhaite </item>
+        <one-of>
+      	    <item> partir </item>
+      	    <item> fermer </item>
+      	    <item> quitter </item>
+      	    <item> exit </item>
+			<item> au revoir </item>
+			<item> quit </item>
+		</one-of>
+	</rule>
+</grammar>
